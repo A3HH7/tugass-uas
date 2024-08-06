@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1>invoice</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Produk</a></li>
+        <li><a href="pembayaran.html">pembayaran</a></li>
+        <li><a href="tentang.html">Kontak Kami</a></li>
+      </ul>
+    </nav>
+    <div id="invoice">
+      <p><strong>Nama:</strong> <span id="invoiceName"></span></p>
+      <p><strong>Alamat:</strong> <span id="invoiceAddress"></span></p>
+      <p><strong>Nomor Telepon:</strong> <span id="invoicePhone"></span></p>
+      <p><strong>Email:</strong> <span id="invoiceEmail"></span></p>
+      <p><strong>Tipe Produk:</strong> <span id="invoiceProduct"></span></p>
+      <p>
+        <strong>Metode Pembayaran:</strong> <span id="invoicePayment"></span>
+      </p>
+    </div>
+
+    <div class="footer" style="position: fixed; bottom: 0%">
+      <p>&copy; 2024 TOKO SAPEDAH LISTRIK</p>
+    </div>
+
+    <script>
+      window.onload = function () {
+        const formData = JSON.parse(localStorage.getItem("formData"));
+
+        if (formData) {
+          document.getElementById("invoiceName").textContent = formData.name;
+          document.getElementById("invoiceAddress").textContent =
+            formData.address;
+          document.getElementById("invoicePhone").textContent = formData.phone;
+          document.getElementById("invoiceEmail").textContent = formData.email;
+          document.getElementById("invoiceProduct").textContent =
+            formData.productType;
+          document.getElementById("invoicePayment").textContent =
+            formData.paymentMethod;
+        } else {
+          alert("Tidak ada data yang tersedia.");
+        }
+      };
+    </script>
+  </body>
+</html>
